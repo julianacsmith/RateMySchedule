@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const crypto = require("node:crypto");
 
 const app = express();
 
@@ -11,56 +12,56 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
-let courses = []
-let courseName = ""
-let courseReviews = []
-
-let reviews = []
-let professorName = ""
-let review = ""
-let grade = ""
-let recommend = ""
-let dateTaken = ""
-let hoursSpent = ""
-
-app.post('/api/course', (req, res) => {
-  let item = {
-    courseName: req.body.courseName,
-    courseReviews: req.body.review
-  };
-  courses.push(item);
-  res.send(item);
-});
-
-app.post('/api/review', (req, res) => {
-  let name = req.body.courseName;
-  let rev = {
-    courseName: name,
-    professorName: req.body.professorName,
-    grade: req.body.grade,
-    review: req.body.review,
-    recommend: req.body.recommend,
-    dateTaken: req.body.dateTaken,
-    hoursSpent: req.body.hoursSpent
-  };
-  reviews.push(rev);
-  
-  if(name in courses){
-    let allReviews = courses[name].courseReviews
-    allReviews.push(rev)
-    courses[name] = allReviews;
-  } else {
-    courses[name] = [rev];
-  }
-  res.send(rev);
-});
-
-app.get('/api/course', (req, res) => {
-  res.send(courses);
-});
-
-app.get('/api/review', (req, res) => {
-  res.send(reviews);
-});
-
 app.listen(3000, () => console.log('Server listening on port 3000!'));
+
+let comments = [];
+let name = "";
+let comment = "";
+
+let locations = [];
+let placeName = "";
+let reason = "";
+
+app.post('/api/comments', (req, res) => {
+  const id = crypto.randomUUID();
+  let com = {
+    name: req.body.name,
+    comment: req.body.comment,
+  };
+  comments.push(com);
+  res.send(com);
+});
+
+app.get('/api/comments', (req, res) => {
+  res.send(comments);
+});
+
+app.delete('/api/comment/:name', (req, res) => {
+  let name = req.params.name;
+  let commentsMap = comments.map(item => {
+    return item.name;
+  });
+  let index = commentsMap.indexOf(name);
+  if (index === -1) {
+    res.status(404)
+      .send("Sorry, that item doesn't exist");
+    return;
+  }
+  let com = comments[index];
+  comments.splice(index,1);
+  res.send(com);
+});
+
+app.get('/api/locations', (req, res) => {
+  res.send(locations);
+});
+
+app.post('/api/locations', (req, res) => {
+  let place = {
+    placeName: req.body.placeName,
+    reason: req.body.reason,
+  };
+  locations.push(place);
+  res.send(place);
+  }
+);

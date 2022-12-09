@@ -87,6 +87,9 @@ const Blogs = () => {
                 <img src={zermattFamily}/>
             </div>
         </div>
+        <div className ={styles.github}>
+            <a href="https://github.com/julianacsmith/TravelBlog">Juliana's GitHub</a>
+        </div>
       </>
     )
 };

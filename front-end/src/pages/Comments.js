@@ -77,9 +77,9 @@ function App() {
       </div>
       <h2>Thoughts? Questions? Opinions? Leave them down below!</h2>
       {comments.map( com => (
-        <div key={com.name} className="individualComment">
-          <h5>{comments.find(product => product.name == com.name).name}</h5>
-          <h4>{com.comment}</h4>
+        <div key={com.name} className={styles.individualComment}>
+          <h4 className={styles.contributer}>{comments.find(product => product.name == com.name).name}</h4>
+          <h5 className={styles.comment}>{com.comment}</h5>
         </div>
       ))}
       <form className={styles.submitForm} onSubmit={addComment}>
@@ -96,8 +96,9 @@ function App() {
       </form>
       <h2>Location Suggestions?</h2>
       {locations.map( place => (
-        <div key={place.placeName} className="product">
-          {place.placeName}, {place.reason}
+        <div key={place.placeName} className={styles.place}>
+          <h4 className={styles.contributer}>{place.placeName}</h4>
+          <h5 className={styles.comment}>{place.reason}</h5>
         </div>
       ))}    
       <form className={styles.submitForm} onSubmit={addLocation}>

@@ -38,6 +38,19 @@ h2 {
 }
 
 .individualComment {
-    margin: 25px;
+    padding: 25px;
+}
+
+.contributer {
+    background-color: #abe0ff;
+    padding: 25px;
+}
+
+.comment {
+    padding: 25px;
+    border-color: black;
+}
+
+.place {
     padding: 25px;
 }

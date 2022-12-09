@@ -36,10 +36,10 @@ const Blogs = () => {
             </div>
             
             <div className="imageReel">
-                <img src={almondTree}/>
-                <img src={meteoraSelfie}/>
-                <img src={meteoraView}/>
-                <img src={monesteryView}/>
+                <img src={require('./images/Almond_Tree.jpg')} />
+                <img src={require('./images/Meteora_Selfie.jpg')}/>
+                <img src={require('./images/Meteora_View.jpg')}/>
+                <img src={require('./images/Monestery_Vew.jpg')}/>
             </div>
             
             <div className={styles.leftEntry}>
@@ -61,10 +61,10 @@ const Blogs = () => {
             </div>
             
             <div className="imageReel">
-                <img src={sounion}/>
-                <img src={naturePic}/>
-                <img src={hydra}/>
-                <img src={coolCat}/>
+                <img src={require('./images/Sounion.jpg')}/>
+                <img src={require('./images/Nature_Pic.jpg')}/>
+                <img src={require('./images/Hydra.jpg')}/>
+                <img src={require('./images/Cool_Cat.jpg')}/>
             </div>
             
             <div className={styles.rightEntry}>
@@ -81,10 +81,10 @@ const Blogs = () => {
             </div>
             
             <div className="imageReel">
-                <img src={swissTrain}/>
-                <img src={snow}/>
-                <img src={sled}/>
-                <img src={zermattFamily}/>
+                <img src={require('./images/Swiss_Train_Full.jpg')}/>
+                <img src={require('./images/Blowing_Snow.jpg')}/>
+                <img src={require('./images/Sledding_in_Alps.jpg')}/>
+                <img src={require('./images/Family.jpg')}/>
             </div>
         </div>
         <div className ={styles.github}>
